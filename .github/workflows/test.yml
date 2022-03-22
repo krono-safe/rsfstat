@@ -4,7 +4,7 @@ name: Test
 on:
   # Triggers the workflow on push or pull request events
   push:
-    branches: [ master, eoh/first-commit ]
+    branches: [ master ]
   pull_request:
     branches: [ master ]
 
