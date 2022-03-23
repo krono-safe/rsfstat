@@ -84,15 +84,14 @@ properties, expressed mathematically as follows:
 
 where:
 
-* `T_{RSF}` is the length of the loop of the RSFs *(all RSFs of the same
+* ![](https://latex.codecogs.com/svg.image?T_\text{RSF}) is the length of the loop of the RSFs *(all RSFs of the same
   Application have the same loop length by construction)*;
-* `N > 1` is the number of active cores *(and thus the number of RSFs)*;
-* `L_{global}` is the global CPU load computed on all the loops of all the RSFs
+* ![](https://latex.codecogs.com/svg.image?N%3E1) is the number of active cores *(and thus the number of RSFs)*
+* ![](https://latex.codecogs.com/svg.image?L_\text{global}) is the global CPU load computed on all the loops of all the RSFs
   of the Application;
-* by convention `t=0` corresponds to the date when the last RSF starts its steady
+* by convention ![](https://latex.codecogs.com/svg.image?t=0) corresponds to the date when the last RSF starts its steady
   state, i.e. starts executing its loop;
-* `\delta^{k}(t)` is valued for any `t` in `[0, T_{RSF}]` to 1 if a Task is
-  scheduled on the `k`-th RSF at date `t`, and 0 otherwise.
+* ![](https://latex.codecogs.com/svg.image?%5Cforall%20t%5Cin%5B0,%20T_%5Ctext%7BRSF%7D%5D,%5Cquad%5Cdelta%5Ek(t)=%5Cbegin%7Bcases%7D1&%5Ctext%7Bif%20a%20Task%20is%20scheduled%20on%20the%20%7Dk%5Ctext%7B-th%20RSF%20at%20date%20%7Dt%5C%5C0&%5Ctext%7Botherwise%7D%5Cend%7Bcases%7D)
 
 The intuition behind this formula is actually quite simple: for each time
 increment, we want to count how many cores are "active", i.e. are scheduled to
@@ -142,16 +141,17 @@ For instance, going back to the last example above, one could have expected from
 a "sane" parallelism ratio a value of 20% instead of 40%: 2 time units of
 parallel computing, divided by 10 time units in a complete cycle. However this
 method would correspond more or less to removing the normalization by
-`L_{global}`, thus failing to verify the key property 2. _(reaching 100% when at
-any given time either all the RSFs schedule a Task, or no RSF schedules a
-Task)_.
+![](https://latex.codecogs.com/svg.image?L_\text{global}), thus failing to
+verify the key property 2. _(reaching 100% when at any given time either all the
+RSFs schedule a Task, or no RSF schedules a Task)_.
 
 A valid alternate definition however could lead to a parallelism ratio of 25% on
 that same example: for each cycle, 2 time units of parallel computing, divided
 by 8 time units corresponding to time slots when at least one core is busy. This
-would correspond effectively to replacing in the definition above `L_{global}`
-with a "pooled load", computed on a virtual scheduling plan obtained by merging
-all the RSFs. Formally, this pooled load is given by:
+would correspond effectively to replacing in the definition above
+![](https://latex.codecogs.com/svg.image?L_\text{global}) with a "pooled load",
+computed on a virtual scheduling plan obtained by merging all the RSFs.
+Formally, this pooled load is given by:
 
 <img
 src="https://latex.codecogs.com/svg.image?L_{\text{pooled}}&space;=&space;\frac{1}{T_{\text{RSF}}}\times&space;\int_0^{T_{\text{RSF}}}\Delta(t)\&space;dt\qquad\text{where&space;}\Delta(t)&space;=&space;\begin{cases}1&space;&&space;\text{when&space;at&space;least&space;one&space;core&space;is&space;active&space;at&space;}t&space;\\&space;0&space;&&space;\text{otherwise}\\\end{cases}"
@@ -161,8 +161,9 @@ dt\qquad\text{where }\Delta(t) = \begin{cases}1 & \text{when at least one core
 is active at }t \\ 0 & \text{otherwise}\\\end{cases}" />
 
 However, we believe it makes more sense to normalize our ratio with the global
-CPU load `L_{global}` rather than with the pooled load `L_{pooled}`. With the
-current definition, the computed value indicates how "far" the current
+CPU load ![](https://latex.codecogs.com/svg.image?L_\text{global}) rather than
+with the pooled load ![](https://latex.codecogs.com/svg.image?L_\text{pooled}).
+With the current definition, the computed value indicates how "far" the current
 scheduling plan is from a "fully parallel" plan, **for a given, fixed global CPU
 load**.
 
