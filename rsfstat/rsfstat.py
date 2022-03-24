@@ -32,7 +32,7 @@ from rt_rsf.Frame import Frame
 from rt_rsf.RSF import RSF
 from rt_rsf.FrameType import FrameType
 
-__version__ = '0.1.0'
+__version__ = '1.0.0'
 
 ################################################################################
 # TYPE ALIASES
