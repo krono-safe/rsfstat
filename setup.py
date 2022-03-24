@@ -24,7 +24,7 @@ long_description = (here / 'README.md').read_text(encoding='utf-8')
 
 setup(
     name='rsfstat',
-    version='0.1.0',
+    version='1.0.0',
     description='Compute statistics on an ASTERIOS static scheduling plan (RSF)',
 
     long_description=long_description,
